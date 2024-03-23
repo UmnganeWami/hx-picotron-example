@@ -270,22 +270,16 @@ local Main = _hx_e()
 local Math = _hx_e()
 local String = _hx_e()
 local Std = _hx_e()
-__haxe_IMap = _hx_e()
 __haxe_Exception = _hx_e()
 __haxe_NativeStackTrace = _hx_e()
 __haxe_ValueException = _hx_e()
-__haxe_ds_ObjectMap = _hx_e()
-__haxe_ds_StringMap = _hx_e()
 __haxe_exceptions_PosException = _hx_e()
 __haxe_exceptions_NotImplementedException = _hx_e()
 __haxe_iterators_ArrayIterator = _hx_e()
 __haxe_iterators_ArrayKeyValueIterator = _hx_e()
 __lua_Boot = _hx_e()
 __lua_UserData = _hx_e()
-__lua_PairTools = _hx_e()
 __lua_Thread = _hx_e()
-__picotron_FileSystem = _hx_e()
-__picotron_Mouse = _hx_e()
 __picotron_Window = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
@@ -644,8 +638,6 @@ Main.new = function()
   return self
 end
 Main.super = function(self) 
-  self.camY = 0;
-  self.camX = 0;
   _update = _hx_bind(self,self.Update);
   _draw = _hx_bind(self,self.Draw);
   __picotron_Window.makeWindow(250, 150, "Hello Title!");
@@ -657,35 +649,9 @@ end
 Main.prototype = _hx_e();
 Main.prototype.Draw = function(self) 
   cls(0);
-  local thing = "this text is camera oriented!";
-  local x = _G.math.floor(self.camX - 0.5);
-  local y = _G.math.floor(self.camY - 0.5);
-  if (y == nil) then 
-    y = 0;
-  end;
-  if (x == nil) then 
-    x = 0;
-  end;
-  if (not __lua_Boot.__instanceof(thing, String)) then 
-    thing = Std.string(thing);
-  end;
-  print(thing, x, y, 7);
-  local thing = t();
-  local x = 0;
-  local y = 8;
-  if (y == nil) then 
-    y = 0;
-  end;
-  if (x == nil) then 
-    x = 0;
-  end;
-  if (not __lua_Boot.__instanceof(thing, String)) then 
-    thing = Std.string(thing);
-  end;
-  print(thing, x, y, 7);
   local thing = "Hello World!";
   local x = 0;
-  local y = 16;
+  local y = 0;
   if (y == nil) then 
     y = 0;
   end;
@@ -696,47 +662,8 @@ Main.prototype.Draw = function(self)
     thing = Std.string(thing);
   end;
   print(thing, x, y, 7);
-  local thing = __picotron_FileSystem.dir("/appdata");
-  local x = 0;
-  local y = 24;
-  if (y == nil) then 
-    y = 0;
-  end;
-  if (x == nil) then 
-    x = 0;
-  end;
-  if (not __lua_Boot.__instanceof(thing, String)) then 
-    thing = Std.string(thing);
-  end;
-  print(thing, x, y, 7);
-  local mouse = __picotron_Mouse.getMouse();
-  local thing = mouse:toString();
-  if (not __lua_Boot.__instanceof(thing, String)) then 
-    thing = Std.string(thing);
-  end;
-  print(thing, 0, 0, 7);
-  camera(_G.math.floor(self.camX), _G.math.floor(self.camY));
 end
 Main.prototype.Update = function(self) 
-  if (keyp("p")) then 
-    sfx(0);
-  end;
-  if (key("up")) then 
-    local tmp = self;
-    tmp.camY = tmp.camY - 0.5;
-  end;
-  if (key("down")) then 
-    local tmp = self;
-    tmp.camY = tmp.camY + 0.5;
-  end;
-  if (key("left")) then 
-    local tmp = self;
-    tmp.camX = tmp.camX - 0.5;
-  end;
-  if (key("right")) then 
-    local tmp = self;
-    tmp.camX = tmp.camX + 0.5;
-  end;
 end
 
 Main.prototype.__class__ =  Main
@@ -952,9 +879,6 @@ Std.int = function(x)
   end;
 end
 
-__haxe_IMap.new = {}
-__haxe_IMap.__name__ = true
-
 __haxe_Exception.new = function(message,previous,native) 
   local self = _hx_new(__haxe_Exception.prototype)
   __haxe_Exception.super(self,message,previous,native)
@@ -1022,35 +946,6 @@ __haxe_ValueException.prototype = _hx_e();
 __haxe_ValueException.prototype.__class__ =  __haxe_ValueException
 __haxe_ValueException.__super__ = __haxe_Exception
 setmetatable(__haxe_ValueException.prototype,{__index=__haxe_Exception.prototype})
-
-__haxe_ds_ObjectMap.new = function() 
-  local self = _hx_new(__haxe_ds_ObjectMap.prototype)
-  __haxe_ds_ObjectMap.super(self)
-  return self
-end
-__haxe_ds_ObjectMap.super = function(self) 
-  self.h = ({});
-  self.k = ({});
-end
-__haxe_ds_ObjectMap.__name__ = true
-__haxe_ds_ObjectMap.__interfaces__ = {__haxe_IMap}
-__haxe_ds_ObjectMap.prototype = _hx_e();
-
-__haxe_ds_ObjectMap.prototype.__class__ =  __haxe_ds_ObjectMap
-
-__haxe_ds_StringMap.new = function() 
-  local self = _hx_new(__haxe_ds_StringMap.prototype)
-  __haxe_ds_StringMap.super(self)
-  return self
-end
-__haxe_ds_StringMap.super = function(self) 
-  self.h = ({});
-end
-__haxe_ds_StringMap.__name__ = true
-__haxe_ds_StringMap.__interfaces__ = {__haxe_IMap}
-__haxe_ds_StringMap.prototype = _hx_e();
-
-__haxe_ds_StringMap.prototype.__class__ =  __haxe_ds_StringMap
 
 __haxe_exceptions_PosException.new = function(message,previous,pos) 
   local self = _hx_new(__haxe_exceptions_PosException.prototype)
@@ -1244,112 +1139,8 @@ end
 __lua_UserData.new = {}
 __lua_UserData.__name__ = true
 
-__lua_PairTools.new = {}
-__lua_PairTools.__name__ = true
-__lua_PairTools.pairsFold = function(table,func,seed) 
-  for k,v in _G.pairs(table) do seed = func(k,v,seed) end;
-  do return seed end;
-end
-__lua_PairTools.copy = function(table1) 
-  local ret = ({});
-  for k,v in _G.pairs(table1) do ret[k] = v end;
-  do return ret end;
-end
-
 __lua_Thread.new = {}
 __lua_Thread.__name__ = true
-
-__picotron_FileSystem.new = {}
-__picotron_FileSystem.__name__ = true
-__picotron_FileSystem.ls = function(dir) 
-  local dirAt = ls("/appdata");
-  local length = nil;
-  local tab = __lua_PairTools.copy(dirAt);
-  local length = length;
-  if (length == nil) then 
-    length = _hx_table.maxn(tab);
-    if (length > 0) then 
-      local head = tab[1];
-      _G.table.remove(tab, 1);
-      tab[0] = head;
-      do return _hx_tab_array(tab, length) end;
-    else
-      do return _hx_tab_array({}, 0) end;
-    end;
-  else
-    do return _hx_tab_array(tab, length) end;
-  end;
-end
-__picotron_FileSystem.dir = function(dir) 
-  do return __picotron_FileSystem.ls(dir) end;
-end
-
-__picotron_Mouse.new = function(x,y,button,wheelX,wheelY) 
-  local self = _hx_new(__picotron_Mouse.prototype)
-  __picotron_Mouse.super(self,x,y,button,wheelX,wheelY)
-  return self
-end
-__picotron_Mouse.super = function(self,x,y,button,wheelX,wheelY) 
-  self.x = x;
-  self.y = y;
-  self.button = button;
-  self.wheelX = wheelX;
-  self.wheelY = wheelY;
-end
-__picotron_Mouse.__name__ = true
-__picotron_Mouse.getMouse = function() 
-  local mx,my,mb,wx,wy = mouse();
-  local mStuff = {x = mx, y = my, button = mb, wheelX = wx, wheelY = wy}
-  local obj = __haxe_ds_ObjectMap.new();
-  __lua_PairTools.pairsFold(mStuff, function(k,v,m) 
-    obj.h[k] = v;
-    obj.k[k] = true;
-    do return obj end;
-  end, obj);
-  local mStuffMap = obj;
-  local ret = mStuffMap.h.x;
-  local ret1 = mStuffMap.h.y;
-  local ret2 = mStuffMap.h.button;
-  local ret3 = mStuffMap.h.wheelX;
-  local ret4 = mStuffMap.h.wheelY;
-  do return __picotron_Mouse.new((function() 
-    local _hx_1
-    if (ret == __haxe_ds_StringMap.tnull) then 
-    _hx_1 = nil; else 
-    _hx_1 = ret; end
-    return _hx_1
-  end )(), (function() 
-    local _hx_2
-    if (ret1 == __haxe_ds_StringMap.tnull) then 
-    _hx_2 = nil; else 
-    _hx_2 = ret1; end
-    return _hx_2
-  end )(), (function() 
-    local _hx_3
-    if (ret2 == __haxe_ds_StringMap.tnull) then 
-    _hx_3 = nil; else 
-    _hx_3 = ret2; end
-    return _hx_3
-  end )(), (function() 
-    local _hx_4
-    if (ret3 == __haxe_ds_StringMap.tnull) then 
-    _hx_4 = nil; else 
-    _hx_4 = ret3; end
-    return _hx_4
-  end )(), (function() 
-    local _hx_5
-    if (ret4 == __haxe_ds_StringMap.tnull) then 
-    _hx_5 = nil; else 
-    _hx_5 = ret4; end
-    return _hx_5
-  end )()) end;
-end
-__picotron_Mouse.prototype = _hx_e();
-__picotron_Mouse.prototype.toString = function(self) 
-  do return Std.string(Std.string(Std.string(Std.string(Std.string(Std.string(Std.string(Std.string(Std.string("") .. Std.string(self.x)) .. Std.string(", ")) .. Std.string(self.y)) .. Std.string(", ")) .. Std.string(self.button)) .. Std.string(", ")) .. Std.string(self.wheelX)) .. Std.string(", ")) .. Std.string(self.wheelY) end
-end
-
-__picotron_Mouse.prototype.__class__ =  __picotron_Mouse
 
 __picotron_Window.new = {}
 __picotron_Window.__name__ = true
@@ -1398,9 +1189,7 @@ end
 local _hx_static_init = function()
   
   String.__name__ = true;
-  Array.__name__ = true;__haxe_ds_StringMap.tnull = ({});
-  
-  
+  Array.__name__ = true;
 end
 
 _hx_bind = function(o,m)

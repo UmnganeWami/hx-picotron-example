@@ -16,7 +16,7 @@ class Main {
 
 	function Draw() {
 		Picotron.cls(0);
-		Picotron.print("Hello World!", 0, 8);
+		Picotron.print("Hello World!", 0, 0);
 	}
 
 	function Update() {}
